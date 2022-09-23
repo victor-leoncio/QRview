@@ -1,0 +1,722 @@
+#:import ScrollEffect kivy.effects.scroll.ScrollEffect
+
+<Manager>:
+    #Entrada:
+    #    name:'entrada'
+    Login:
+        name:'login'
+    Register:
+        name:'register'
+    Principal:
+        name:'principal'
+    QRdados:
+        name:'qrdados'
+    Criardados:
+        name:'criardados'
+    Finaldados:
+        name:'finaldados'
+    Vizualizar:
+        name:'vizualizar'
+
+#<Entrada>:
+    #canvas:
+    #    Color:
+    #        rgba:0.063,0.086,0.157,1
+    #    Rectangle:
+    #        size:self.size
+    #        pos:self.pos
+
+#    MDFloatingActionButton:
+#        pos_hint:{'top':.9,'center_x':0.5}
+#    BoxLayout:
+#        orientation:'vertical'
+#        spacing:'5dp'
+#        pos_hint: {'center_x':0.5,'center_y':0.4}
+#        size_hint_y:None
+#        height:self.minimum_height
+#        size_hint_x:0.75
+#
+#        MDFillRoundFlatIconButton:
+#            #md_bg_color:0.996,0.325,0.239,1
+#            pos_hint:{'center_x':0.5,'center_y':0.5}
+#            icon:'account'
+#            text:'Logar       '
+#            on_release:
+#                root.manager.transition.direction = 'left'
+#                root.manager.current = 'login'
+#        MDFillRoundFlatIconButton:
+#            icon:'lock'
+#            text:'Registrar'
+#            #md_bg_color:0.996,0.325,0.239,1
+#            pos_hint:{'center_x':0.5,'center_y':0.5}
+#            on_release:
+#                root.manager.transition.direction = 'left'
+#                root.manager.current = 'register'
+
+<Login>:
+    #canvas:
+    #    Color:
+    #        rgba:0.063,0.086,0.157,1
+    #    Rectangle:
+    #        size:self.size
+    #        pos:self.pos
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba:app.theme_cls.primary_color
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            size_hint_y:None
+            height:self.minimum_height
+            MDLabel:
+                halign:'center'
+                pos_hint:{'center_x':0.5}
+                size_hint_y:None
+                height:'48dp'
+                theme_text_color: "Custom"
+                text_color:1,1,1,1
+                text:'Login'
+        BoxLayout:
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            size_hint_x:0.75
+            BoxLayout:
+                padding:0,0,0,'48dp'
+                spacing:'1dp'
+                pos_hint:{'center_x':0.5,'center_y':0.5}
+                orientation:'vertical'
+                size_hint_y:None
+                height:self.minimum_height
+                MDTextField:
+                    mode:'rectangle'
+                    hint_text: "Digite o email"
+                    theme_text_color: "Custom"
+                    current_hint_text_color:1,1,1,1
+                MDTextField:
+                    mode:'rectangle'
+                    hint_text: "Digite a senha"
+                    current_hint_text_color:1,1,1,1
+                    password:True
+                BoxLayout:
+                    padding:0,'5dp',0,0
+                    pos_hint:{'center_x':0.5,'center_y':0.5}
+                    size_hint_y:None
+                    height:self.minimum_height
+                    MDRaisedButton:
+                        size_hint_y:None
+                        height:'30dp'
+                        text:'Register'
+                        on_release:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'register'
+                    Widget:
+                    MDRaisedButton:
+                        size_hint_y:None
+                        height:'30dp'
+                        text:' Enter '
+                        on_release:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'principal'
+
+<Register>:
+    #canvas:
+    #    Color:
+    #        rgba:0.063,0.086,0.157,1
+    #    Rectangle:
+    #        size:self.size
+    #        pos:self.pos
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            size_hint_y:None
+            height:self.minimum_height
+            MDIconButton:
+                #theme_text_color: "Custom"
+                #text_color:1,1,1,1
+                icon:'chevron-left'
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'login'
+            MDLabel:
+                theme_text_color: "Custom"
+                text_color:1,1,1,1
+                text:'Voltar'
+        BoxLayout:
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            size_hint_x:0.75
+            BoxLayout:
+                padding:0,0,0,'48dp'
+                spacing:'8dp'
+                pos_hint:{'center_x':0.5,'center_y':0.5}
+                orientation:'vertical'
+                size_hint_y:None
+                height:self.minimum_height
+                #MDTextField:
+                #    mode:'rectangle'
+                #    hint_text: "Digite o nome"
+                MDTextField:
+                    mode:'rectangle'
+                    hint_text: "Digite o email"
+                    current_hint_text_color:1,1,1,1
+                MDTextField:
+                    mode:'rectangle'
+                    hint_text: "Digite uma senha"
+                    current_hint_text_color:1,1,1,1
+                    password: True
+                MDTextField:
+                    mode:'rectangle'
+                    hint_text: "Confirmar senha"
+                    current_hint_text_color:1,1,1,1
+                    password: True
+                BoxLayout:
+                    pos_hint:{'center_x':0.5,'center_y':0.5}
+                    size_hint_y:None
+                    height:self.minimum_height
+                    Widget:
+                    MDRaisedButton:
+                        size_hint_y:None
+                        height:'30dp'
+                        text:'Create'
+                        on_release:root.manager.current = 'login'
+
+<Principal>:
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            size_hint_y:None
+            height:self.minimum_height
+            MDToolbar:
+                title:'QRview'
+                BoxLayout:
+                    size_hint_y:None
+                    height:self.minimum_height
+                    size_hint_x:None
+                    width:self.minimum_width
+                    pos_hint:{'center_y':0.5}
+                    MDIconButton:
+                        icon:'help-circle-outline'
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                    MDIconButton:
+                        icon:'pencil-plus'
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                        on_release:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'qrdados'
+                    MDIconButton:
+                        icon:'dots-vertical'
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                        on_release:root.manager.current = 'login'
+        BoxLayout:
+            id:view
+            BoxLayout:
+                id:camera
+                pos_hint:{'center_x':0.5, 'center_y':0.5}
+                size_hint_y:None
+                height:self.minimum_height
+                size_hint_x:0.5
+                #orientation:'vertical'
+                #BoxLayout:
+                #    id:h
+                #    orientation:'vertical'
+                #    size_hint_y:None
+                #    height:self.minimum_height
+                #    spacing:'10dp'
+                #    MDIcon:
+                #        theme_text_color: "Custom"
+                #        text_color: 1, 1, 1, 1
+                #        size_hint_y:None
+                #        height:'80dp'
+                #        icon:'qrcode-scan'
+                #        halign:'center'
+                #        font_size:'80dp'
+                #    MDLabel:
+                #        theme_text_color: "Custom"
+                #        text_color: 1, 1, 1, 1
+                #        size_hint_y:None
+                #        height:'30dp'
+                #        halign:'center'
+                #        text:'Clique no botão inferior direito para abrir a camera'
+                #        bold:True  
+    BoxLayout:
+        id:camicon
+        size_hint_y:None
+        height:self.minimum_height
+        size_hint_x:None
+        width:self.minimum_width
+        pos_hint:{'right':1}
+        padding:'15dp'
+        MDFloatingActionButton:
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            md_bg_color:app.theme_cls.primary_color
+            icon:'camera'
+            size_hint_y:None
+            height:'70dp'
+            size_hint_x:None
+            width:self.height
+            on_release:root.View()
+
+    BoxLayout:
+        id:help
+        pos_hint:{'center_x':0.5,'center_y':0.5}
+        orientation:'vertical'
+        size_hint_y:None
+        height:self.minimum_height
+        spacing:'10dp'
+        MDIcon:
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint_y:None
+            height:'80dp'
+            icon:'qrcode-scan'
+            halign:'center'
+            font_size:'80dp'
+        MDLabel:
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint_y:None
+            height:'30dp'
+            halign:'center'
+            text:'Clique no botão inferior direito para abrir a camera'
+            bold:True 
+
+<QRdados>:
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            orientation:'vertical'
+            size_hint_y:None
+            height:self.minimum_height
+            MDToolbar:
+                title:'QRview'
+                BoxLayout:
+                    size_hint_y:None
+                    height:self.minimum_height
+                    size_hint_x:None
+                    width:self.minimum_width
+                    pos_hint:{'center_y':0.5}
+                    MDIconButton:
+                        icon:'help-circle-outline'
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                    MDIconButton:
+                        icon:'camera'
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                        on_release:
+                            root.manager.transition.direction = 'right'
+                            root.manager.current = 'principal'
+                    MDIconButton:
+                        icon:'dots-vertical'
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+        BoxLayout:
+            MDBottomNavigation:
+                #text_color_normal: app.theme_cls.accent_palette
+                panel_color: .05,.05,.05,1
+                #text_color_active: 0, 1, 1, 1
+                #text_color_normal: 1,0,1,1
+                MDBottomNavigationItem:
+                    icon:'account'
+                    name:'screenitens'
+                    text:'Itens'
+                    ScrollView:
+                        BoxLayout:
+                            padding:'10dp'
+                            BoxLayout:
+                                canvas:
+                                    Color:
+                                        rgba:1,0.757,0.027,1
+                                    RoundedRectangle:
+                                        pos:self.pos
+                                        size:self.size
+                                        radius:20,20,20,20
+                                size_hint_y:None
+                                height:'80dp'
+                                padding:0,0,'20dp',0
+                                pos_hint:{'top':1}
+                                BoxLayout:
+                                    size_hint_x:None
+                                    width:self.minimum_width
+                                    MDIcon:
+                                        size_hint_x:None
+                                        width:self.height
+                                        halign:'center'
+                                        icon:'account'
+                                        font_size:'50sp'
+                                BoxLayout:
+                                    orientation:'vertical'
+                                    MDLabel:
+                                        font_size:'20sp'
+                                        text:'Nome do Item'
+                                        bold:True
+                                    MDLabel:
+                                        text:'ID: 100001'
+                                        bold:True
+                                MDIcon:
+                                    font_size:'50sp'
+                                    halign:'right'
+                                    icon:'qrcode'
+                    BoxLayout:
+                        padding:'10dp'
+                        size_hint_y:None
+                        height:self.minimum_height
+                        size_hint_x:None
+                        width:self.minimum_width
+                        pos_hint:{'right':1}
+                        MDIconButton:
+                            md_bg_color:app.theme_cls.primary_color
+                            icon:'pencil-plus'
+                            on_release:
+                                root.Name()
+                                #root.manager.transition.direction = 'left'
+                                #root.manager.current = 'criardados'
+                MDBottomNavigationItem:
+                    icon:'account-group'
+                    name:'screengroups'
+                    text:'groups'
+                    ScrollView:
+                        BoxLayout:
+                            padding:'10dp'
+                            BoxLayout:
+                                canvas:
+                                    Color:
+                                        rgba:0.267,0.514,0.808,1
+                                    RoundedRectangle:
+                                        pos:self.pos
+                                        size:self.size
+                                        radius:20,20,20,20
+                                size_hint_y:None
+                                height:'120dp'
+                                pos_hint:{'top':1}
+                                orientation:'vertical'
+                                BoxLayout:
+                                    size_hint_y:None
+                                    height:'80dp'
+                                    BoxLayout:
+                                        size_hint_x:None
+                                        width:self.minimum_width
+                                        MDIcon:
+                                            size_hint_x:None
+                                            width:self.height
+                                            halign:'center'
+                                            icon:'account-group'
+                                            font_size:'50sp'
+                                    BoxLayout:
+                                        orientation:'vertical'
+                                        MDLabel:
+                                            font_size:'20sp'
+                                            text:'   Nome do Grupo'
+                                            bold:True
+                                            halign:'center'
+                                        MDLabel:
+                                            text:'ITENS: 20'
+                                            #halign:'center'
+                                            bold:True
+                                    BoxLayout:
+                                        size_hint_x:None
+                                        width:self.minimum_width
+                                        MDIcon:
+                                            size_hint_x:None
+                                            width:self.height
+                                            icon:'qrcode'
+                                            font_size:'50sp'
+                                BoxLayout:
+                                    size_hint_y:None
+                                    height:'40dp'
+                                    size_hint_x:None
+                                    width:self.height
+                                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                                    MDIconButton:
+                                        theme_text_color: "Custom"
+                                        text_color: 0,0,0,1
+                                        user_font_size: '30sp'
+                                        icon:'plus-circle-outline'
+                                        on_release:print(1)
+                                        
+                    BoxLayout:
+                        padding:'10dp'
+                        size_hint_y:None
+                        height:self.minimum_height
+                        size_hint_x:None
+                        width:self.minimum_width
+                        pos_hint:{'right':1}
+                        MDIconButton:
+                            md_bg_color:app.theme_cls.primary_color
+                            icon:'pencil-plus'
+                            on_release:
+                                root.Name()
+                                #root.manager.transition.direction = 'left'
+                                #root.manager.current = 'criardados'
+
+<Criardados>:
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            size_hint_y:None
+            height:self.minimum_height
+            BoxLayout:
+                canvas:
+                    Color:
+                        rgba:app.theme_cls.primary_color
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                size_hint_y:None
+                height:'64dp'
+                padding:'18dp',0,'18dp',0
+                BoxLayout:
+                    MDIconButton:
+                        theme_text_color: "Custom"
+                        text_color: 1,1,1,1
+                        icon:'arrow-left'
+                        pos_hint:{'center_y':0.5}
+                        on_release:
+                            root.Saindo()
+                            root.manager.transition.direction = 'right'
+                            root.manager.current = 'qrdados'
+                    Label:
+                        bold:True
+                        font_size:'20sp'
+                        text:'Nome do Item'
+                    MDRaisedButton:
+                        md_bg_color:.25,.25,.25,1
+                        text:'Avançar'
+                        pos_hint:{'center_y':0.5}
+                        on_release:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'finaldados'
+                            root.Guardar()
+        BoxLayout:
+            orientation:'vertical'
+            ScrollView:
+                effect_cls:ScrollEffect
+                BoxLayout:
+                    id:box
+                    padding:'10dp'
+                    spacing:'10dp'
+                    #pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    orientation:'vertical'
+                    size_hint_y:None
+                    height:self.minimum_height
+            BoxLayout:
+                size_hint_y:None
+                height:self.minimum_height
+                size_hint_x:None
+                width:self.minimum_width
+                pos_hint:{'center_x':0.5}
+                MDIconButton:
+                    theme_text_color: "Custom"
+                    text_color: app.theme_cls.primary_color
+                    user_font_size:'40sp'
+                    icon:'plus-circle-outline'
+                    on_release:
+                        root.Disp()
+                        root.menu()
+
+    BoxLayout:
+        #iden:0
+        id:ajuda
+        size_hint_y:None
+        height:self.minimum_height
+        padding:0,0,0,0
+        pos_hint:{'center_x':0.5, 'center_y':0.5}
+        orientation:'vertical'
+        spacing:'15dp'
+        MDIcon:
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign:'center'
+            icon:'account-card-details-outline'
+            size_hint_y:None
+            height:'60dp'
+            font_size:'80sp'
+        MDLabel:
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign:'center'
+            size_hint_y:None
+            height:'30dp'
+            text:"Clique no símbolo abaixo para adicionar conteúdos "
+            bold:True
+
+    #BoxLayout:
+    #    size_hint_y:None
+    #    height:self.minimum_height
+    #    size_hint_x:None
+    #    width:self.minimum_width
+    #    pos_hint:{'center_x':0.5}
+    #    MDIconButton:
+    #        theme_text_color: "Custom"
+    #        text_color: app.theme_cls.primary_color
+    #        user_font_size:'40sp'
+    #        icon:'plus-circle-outline'
+    #        on_release:root.menu()
+
+<Finaldados>:
+    BoxLayout:
+        orientation:'vertical'
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba:app.theme_cls.primary_color
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            size_hint_y:None
+            height:'64'
+            padding:'18dp',0,'66dp',0
+            BoxLayout:
+                MDIconButton:
+                    theme_text_color: "Custom"
+                    text_color: 1,1,1,1
+                    icon:'arrow-left'
+                    pos_hint:{'center_y':0.5}
+                    on_release:
+                        root.manager.transition.direction = 'right'
+                        root.manager.current = 'criardados'
+                Label:
+                    bold:True
+                    font_size:'20sp'
+                    text:'Nome do Item'
+        BoxLayout:
+            BoxLayout:
+                orientation:'vertical'
+                size_hint_y:None
+                height:self.minimum_height
+                pos_hint:{'top':1}
+                spacing:'20dp'
+                MDLabel:
+                    text:'Escolha a cor do seu QRcode!'
+                    theme_text_color: "Custom"
+                    text_color: 1,1,1,1
+                    size_hint_y:None
+                    height:'50dp'
+                    halign:'center'
+                    font_size:'25sp'
+                BoxLayout:
+                    size_hint_y:None
+                    height:self.minimum_height
+                    size_hint_x:None
+                    width:self.minimum_height
+                    pos_hint:{'center_x':0.5}
+                    Image:
+                        id:cor
+                        source:'branco.png'
+                        size_hint_y:None
+                        height:'170dp'
+                GridLayout:
+                    padding:0,'60dp',0,0
+                    pos_hint:{'center_x':0.5}
+                    size_hint_y:None
+                    size_hint_x:None
+                    width:self.minimum_width
+                    height:self.minimum_height
+                    spacing:'10dp'
+                    cols:3
+                    MDFloatingActionButton:
+                        icon:'palette'
+                        size_hint_y:None
+                        height:'60dp'
+                        size_hint_x:None
+                        width:self.height
+                        md_bg_color:1,1,1,1
+                        on_release: root.ChangeColor('branco.png')
+                    MDFloatingActionButton:
+                        icon:'palette'
+                        size_hint_y:None
+                        height:'60dp'
+                        size_hint_x:None
+                        width:self.height
+                        md_bg_color:0.267,0.514,0.808,1
+                        on_release: root.ChangeColor('azul.png')
+                    MDFloatingActionButton:
+                        icon:'palette'
+                        size_hint_y:None
+                        height:'60dp'
+                        size_hint_x:None
+                        width:self.height
+                        md_bg_color:0.718,0.141,0.012,1
+                        on_release: root.ChangeColor('vermelho.png')
+                    MDFloatingActionButton: 
+                        icon:'palette'
+                        size_hint_y:None
+                        height:'60dp'
+                        size_hint_x:None
+                        width:self.height
+                        md_bg_color:1,0.757,0.027,1
+                        on_release:root.ChangeColor('amarelo.png')
+                    MDFloatingActionButton:
+                        icon:'palette'
+                        size_hint_y:None
+                        height:'60dp'
+                        size_hint_x:None
+                        width:self.height
+                        md_bg_color:0.106,0.482,0.204,1
+                        on_release:root.ChangeColor('verde.png')
+                    MDFloatingActionButton: 
+                        icon:'palette'
+                        size_hint_y:None
+                        height:'60dp'
+                        size_hint_x:None
+                        width:self.height
+                        md_bg_color:0.506,0.216,0.447,1
+                        on_release:root.ChangeColor('roxo.png')
+
+                BoxLayout:
+                    padding:0,'50dp',0,0
+                    size_hint_y:None
+                    height:self.minimum_height
+                    size_hint_x:None
+                    width:self.minimum_width
+                    pos_hint:{'center_x':0.5}
+                    MDRaisedButton:
+                        pos_hint:{'center_x':0.5}
+                        text:'Criar'
+                        on_release: 
+                            app.root.get_screen('criardados').ids.box.clear_widgets()
+                            root.Criar()
+                            root.manager.transition.direction = 'right'
+                            root.manager.current = 'qrdados'
+
+<Vizualizar>:
+    BoxLayout:
+        orientation:'vertical'
+        pos_hint: {'top':1}
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba:app.theme_cls.primary_color
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            size_hint_y:None
+            height:'64'
+            padding:'18dp',0,'66dp',0
+            BoxLayout:
+                MDIconButton:
+                    theme_text_color: "Custom"
+                    text_color: 1,1,1,1
+                    icon:'arrow-left'
+                    pos_hint:{'center_y':0.5}
+                    on_release:
+                        root.manager.transition.direction = 'right'
+                        root.manager.current = 'principal'
+                Label:
+                    bold:True
+                    font_size:'20sp'
+                    text:'Nome do Item'
+        ScrollView:
+            BoxLayout:
+                id:vizu
+                padding:'20dp'
+                spacing:'10dp'
+                size_hint_y:None
+                height:self.minimum_height
+                orientation:'vertical'
+    
